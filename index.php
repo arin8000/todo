@@ -3,7 +3,7 @@ require_once 'app/init.php';
 
 $itemsQuery = $db->prepare("
      SELECT id, name, done
-        From items
+        FROM items
         WHERE user = :user
 ");
 

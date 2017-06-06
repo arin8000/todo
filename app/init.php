@@ -2,11 +2,8 @@
 
 session_start();
 
-
-
 $_SESSION['user_id'] = 1;
 
-//$db = new PDO('mysqli:dbname=todo;host=localhost', 'root', 'root');
 $db = new PDO('mysql:host=localhost;dbname=todo', 'root', 'root');
 
 
