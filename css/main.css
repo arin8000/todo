@@ -35,7 +35,11 @@ a {
     list-style-type: none;
 }
 
-.items li:hover .done-button {
+/*.items li:hover .done-button, .items li:hover .delete-button  {*/
+    /*opacity: 1;*/
+/*}*/
+
+.delete-button:hover, .done-button:hover, .notdone-button:hover {
     opacity: 1;
 }
 
@@ -79,4 +83,30 @@ Submit button
     width: 100%;
     margin-top: 10px;
     box-shadow: 3px 3px 0 #ddd;
+}
+
+/*
+Delete button
+ */
+.delete-button {
+    display: inline-block;
+    font-size: 0.8em;
+    background-color: #d9dfe1;
+    color: #363639;
+    padding: 3px 6px;
+    border: 0;
+    opacity: 0.4;
+}
+
+/*
+Not done button
+ */
+.notdone-button {
+    display: inline-block;
+    font-size: 0.8em;
+    background-color: #d9dfe1;
+    color: #363639;
+    padding: 3px 6px;
+    border: 0;
+    opacity: 0.4;
 }

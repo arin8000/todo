@@ -25,7 +25,6 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
         <link rel="stylesheet" href="css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     </head>
     <body>
         <div class="list">
@@ -37,7 +36,13 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                     <li>
                         <span class="item<?php echo $item['done'] ? ' done ' : '' ?>"><?php echo $item['name']; ?></span>
                         <?php if (!$item['done']): ?>
-                            <a href="mark.php?as=done&item=<?php echo $item['id']; ?>" class="done-button">Mark as done</a>
+                            <a href="mark.php?as=done&item=<?php echo $item['id']; ?>" class="done-button">Done</a>
+                        <?php endif;?>
+                        <?php if (!$item['deleted']): ?>
+                            <a href="mark.php?as=delete&item=<?php echo $item['id']; ?>" class="delete-button">Delete</a>
+                        <?php endif;?>
+                        <?php if (!$item['notdone']): ?>
+                            <a href="mark.php?as=notdone&item=<?php echo $item['id']; ?>" class="notdone-button">Not done</a>
                         <?php endif;?>
                     </li>
                 <?php endforeach; ?>
