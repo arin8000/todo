@@ -35,8 +35,7 @@ if (isset($_GET['as'], $_GET['item'])) {
             break;
         case 'delete':
             $doneQuery = $db->prepare("
-                UPDATE items
-                SET deleted = 0
+                DELETE FROM items
                 WHERE id = :item
                 AND user = :user
             ");

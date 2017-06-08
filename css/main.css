@@ -71,6 +71,8 @@ Done button
     padding: 3px 6px;
     border: 0;
     opacity: 0.4;
+    float: right;
+    margin-left: 10px;
 }
 
 /*
@@ -96,6 +98,8 @@ Delete button
     padding: 3px 6px;
     border: 0;
     opacity: 0.4;
+    float: right;
+    margin-left: 10px;
 }
 
 /*
@@ -109,4 +113,6 @@ Not done button
     padding: 3px 6px;
     border: 0;
     opacity: 0.4;
+    float: right;
+    margin-left: 10px;
 }
