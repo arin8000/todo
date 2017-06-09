@@ -1,12 +1,23 @@
 <?php
 
-session_start();
+//session_start();
+//
+//$_SESSION['user_id'] = 1;
+//
+//$db = new PDO('mysql:host=localhost;dbname=todo', 'root', 'root');
+//
+//
+//if(!isset($_SESSION['user_id'])) {
+//    die("You are not signed in.");
+//}
 
-$_SESSION['user_id'] = 1;
+$server = 'localhost';
+$username = 'root';
+$password = 'root';
+$database = 'todo';
 
-$db = new PDO('mysql:host=localhost;dbname=todo', 'root', 'root');
-
-
-if(!isset($_SESSION['user_id'])) {
-    die("You are not signed in.");
+try {
+    $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }

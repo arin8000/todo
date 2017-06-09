@@ -1,57 +1,55 @@
 <?php
-include("app/init.php");
 session_start();
 
-if(isset($_POST)) {
-    print_r($_POST);
+if(isset($_SESSION['user_id'])) {
+    header("Location:index.php");
 }
 
+require 'app/init.php';
+
+
+if(!empty($_POST['email']) && !empty($_POST['password'])):
+
+    $records = $conn->prepare('SELECT id, email, password FROM users WHERE email= :email');
+    $records->bindParam(':email', $_POST['email']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    $message = "";
+
+if(count($results) > 0 && password_verify($_POST['password'], $results['password']) ){
+    $_SESSION['user_id'] = $results['id'];
+    header("Location:index.php");
+} else {
+    $message = "Sorry, those credentials do not match! &#9785";
+}
+
+endif;
 ?>
+
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Login Page</title>
-
-    <style type = "text/css">
-        body {
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:14px;
-        }
-
-        label {
-            font-weight:bold;
-            width:100px;
-            font-size:14px;
-        }
-
-        .box {
-            border:#666666 solid 1px;
-        }
-    </style>
-
+    <title>Login Below</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 </head>
-
-<body bgcolor = "#FFFFFF">
-
-<div align = "center">
-    <div style = "width:300px; border: solid 1px #333333; " align = "left">
-        <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
-
-        <div style = "margin:30px">
-
-            <form action = "" method = "post">
-                <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                <input type = "submit" value = " Submit "/><br />
-            </form>
-
-            <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
-
-        </div>
-
+<body>
+    <div class="header">
+        <a href="/">Your App Name</a>
     </div>
+    <?php if(!empty($message)): ?>
+        <p><?= $message ?></p>
+    <?php endif; ?>
+    <h1>Login</h1>
+    <span>or <a href="register.php">register here</a></span>
 
-</div>
-
+    <form action="login.php" method="POST">
+        <input type="text" placeholder="Enter your email" name="email">
+        <input type="password" placeholder="Enter your password" name="password">
+        <input type="submit">
+    </form>
 </body>
+
 </html>
+
