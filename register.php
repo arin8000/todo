@@ -37,7 +37,7 @@ endif;
 </head>
 <body>
 <div class="header">
-    <a href="/">Your App Name</a>
+    <a href="index.php">Todo List</a>
 </div>
 
 <?php if(!empty($message)): ?>

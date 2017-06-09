@@ -116,3 +116,7 @@ Not done button
     float: right;
     margin-left: 10px;
 }
+
+#logout {
+    float: right;
+}

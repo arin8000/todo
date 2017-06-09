@@ -1,20 +1,14 @@
 <?php
-
 require_once 'app/init.php';
-
 if(isset($_POST['name'])) {
     $name = trim($_POST['name']);
-
     if (!empty($name)) {
-        $addedQuery = $db->prepare("
-            INSERT INTO items (name, user, done, created)
-            VALUES (:name, :user, 0, NOW())
+        $addedQuery = $conn->prepare("
+            INSERT INTO items (name, done, created)
+            VALUES (:name, 0, NOW())
         ");
-
         $addedQuery->execute([
-           'name' => $name,
-            'user' => $_SESSION['user_id']
-
+            'name' => $name
         ]);
     }
 }
