@@ -9,7 +9,7 @@ body, input {
 
 a {
     text-decoration: none;
-    border-bottom: 1px dashed #363639;
+    /*border-bottom: 1px dashed #363639;*/
 }
 
 /* List */
