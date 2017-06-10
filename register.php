@@ -45,7 +45,7 @@ endif;
     <p><?= $message ?></p>
 <?php endif; ?>
 <h1>Register</h1>
-<span>or <a href="login.php">login here</a></span>
+<span>or <a href="login.php" id="login_here">login here</a></span>
 
 <form action="register.php" method="POST">
     <input type="text" placeholder="Enter your email" name="email">
